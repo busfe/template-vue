@@ -1,1 +1,2 @@
-static/*.js
+build/*.js
+config/*.js
