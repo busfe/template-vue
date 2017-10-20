@@ -1,4 +1,5 @@
 'use strict'
+const path = require('path')
 const vueLoaderConfig = require('./build/vue-loader.conf')
 
 module.exports = function (dpackCfg) {
@@ -6,7 +7,7 @@ module.exports = function (dpackCfg) {
     app: './src/main.js'
   };
 
-  dpackCfg.resolve.extensions.push('.vue');
+  dpackCfg.resolveLoader.extensions.push('.vue');
 
   dpackCfg.module.rules = dpackCfg.module.rules || {};
 
@@ -14,16 +15,16 @@ module.exports = function (dpackCfg) {
     test: /\.(js|vue)$/,
     loader: 'eslint-loader',
     enforce: 'pre',
-    include: [resolve('src')],
+    include: [path.resolve('src')],
     options: {
       formatter: require('eslint-friendly-formatter')
     }
   };
 
   dpackCfg.module.rules.vue = {
-      test: /\.vue$/,
-      loader: 'vue-loader',
-      options: vueLoaderConfig
+    test: /\.vue$/,
+    loader: 'vue-loader',
+    options: vueLoaderConfig
   };
 
   return dpackCfg;
