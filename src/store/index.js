@@ -1,10 +1,11 @@
 import vue from 'vue';
 import vuex from 'vuex';
-import * as actions from './actions.js';
-import * as getters from './getters.js';
+import createLogger from 'vuex/dist/logger';
+import * as actions from './actions';
+import getters from './getters';
 import state from './state';
 import mutations from './mutations';
-import createLogger from 'vuex/dist/logger';
+
 
 vue.use(vuex);
 
@@ -12,7 +13,7 @@ const debug = process.env.NODE_ENV !== 'production';
 
 const STORAGE_KEY = 'todos-vuejs';
 
-const localStoragePlugin = store => {
+const localStoragePlugin = (store) => {
   store.subscribe((mutation, { todos }) => {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
   })
