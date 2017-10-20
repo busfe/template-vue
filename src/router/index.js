@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import TodoMVC from '../views/todoMVC/index';
+import TodoMVC from '../views/todoMVC';
 
 Vue.use(Router);
 

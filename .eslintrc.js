@@ -28,5 +28,7 @@ module.exports = {
     }],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
-  }
+  },
+  'no-param-reassign': ['error', {"props": false}], //allow reassignment of function parameters
+  'arrow-parens': 'as-needed' // allows omitting parens when there is only one argument.
 }
