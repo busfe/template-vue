@@ -49,46 +49,45 @@ import Todo from '../../components/Todo.vue';
 const filters = {
   all: todos => todos,
   active: todos => todos.filter(todo => !todo.done),
-  completed: todos => todos.filter(todo => todo.done)
-}
+  completed: todos => todos.filter(todo => todo.done),
+};
 export default {
   components: { Todo },
-  data () {
+  data() {
     return {
       visibility: 'all',
-      filters: filters
-    }
+      filters,
+    };
   },
   computed: {
     ...mapGetters(['todos']),
-    allChecked () {
-      return this.todos.every(todo => todo.done)
+    allChecked() {
+      return this.todos.every(todo => todo.done);
     },
-    filteredTodos () {
-      return filters[this.visibility](this.todos)
+    filteredTodos() {
+      return filters[this.visibility](this.todos);
     },
-    remaining () {
-      return this.todos.filter(todo => !todo.done).length
-    }
+    remaining() {
+      return this.todos.filter(todo => !todo.done).length;
+    },
   },
   methods: {
-    _addTodo (e) {
-      var text = e.target.value
-      console.log(e, text)
+    _addTodo(e) {
+      var text = e.target.value;
       if (text.trim()) {
-        this.addTodo({ text, done: false })
+        this.addTodo({ text, done: false });
       }
-      e.target.value = ''
+      e.target.value = '';
     },
     ...mapActions([
       'addTodo',
       'toggleAll',
-      'clearCompleted'
+      'clearCompleted',
     ])
   },
   filters: {
     pluralize: (n, w) => n === 1 ? w : (w + 's'),
-    capitalize: s => s.charAt(0).toUpperCase() + s.slice(1)
+    capitalize: s => s.charAt(0).toUpperCase() + s.slice(1),
   }
 }
 </script>

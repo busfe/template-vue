@@ -20,24 +20,23 @@
 
 <script>
 import { mapActions } from 'vuex';
-import * as types from '../store/mutation-types.js';
 
 export default {
   name: 'Todo',
   props: ['todo'],
-  data () {
+  data() {
     return {
-      editing: false
-    }
+      editing: false,
+    };
   },
   directives: {
-    focus (el, { value }, { context }) {
+    focus(el, { value }, { context }) {
       if (value) {
         context.$nextTick(() => {
-          el.focus()
-        })
+          el.focus();
+        });
       }
-    }
+    },
   },
   methods: {
     ...mapActions([
@@ -45,25 +44,25 @@ export default {
       'toggleTodo',
       'deleteTodo'
     ]),
-    doneEdit (e) {
-      const value = e.target.value.trim()
-      const { todo } = this
+    doneEdit(e) {
+      const value = e.target.value.trim();
+      const { todo } = this;
       if (!value) {
         this.deleteTodo({
-          todo
-        })
+          todo,
+        });
       } else if (this.editing) {
         this.editTodo({
           todo,
-          value
-        })
-        this.editing = false
+          value,
+        });
+        this.editing = false;
       }
     },
-    cancelEdit (e) {
-      e.target.value = this.todo.text
-      this.editing = false
+    cancelEdit(e) {
+      e.target.value = this.todo.text;
+      this.editing = false;
     }
   }
-}
+};
 </script>
