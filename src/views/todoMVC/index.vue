@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     _addTodo(e) {
-      let text = e.target.value;
+      const text = e.target.value;
       if (text.trim()) {
         this.addTodo({ text, done: false });
       }
