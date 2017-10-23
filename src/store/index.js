@@ -16,7 +16,7 @@ const STORAGE_KEY = 'todos-vuejs';
 const localStoragePlugin = (store) => {
   store.subscribe((mutation, { todos }) => {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
-  })
+  });
 };
 
 export default new vuex.Store({

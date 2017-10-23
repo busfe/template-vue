@@ -42,7 +42,7 @@ export default {
     ...mapActions([
       'editTodo',
       'toggleTodo',
-      'deleteTodo'
+      'deleteTodo',
     ]),
     doneEdit(e) {
       const value = e.target.value.trim();
@@ -62,7 +62,7 @@ export default {
     cancelEdit(e) {
       e.target.value = this.todo.text;
       this.editing = false;
-    }
-  }
+    },
+  },
 };
 </script>

@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     _addTodo(e) {
-      var text = e.target.value;
+      let text = e.target.value;
       if (text.trim()) {
         this.addTodo({ text, done: false });
       }
@@ -83,13 +83,13 @@ export default {
       'addTodo',
       'toggleAll',
       'clearCompleted',
-    ])
+    ]),
   },
   filters: {
-    pluralize: (n, w) => n === 1 ? w : (w + 's'),
+    pluralize: (n, w) => (n === 1 ? w : `${w}s`),
     capitalize: s => s.charAt(0).toUpperCase() + s.slice(1),
-  }
-}
+  },
+};
 </script>
 <style>
   html,
