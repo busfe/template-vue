@@ -5,7 +5,9 @@ const vueLoaderConfig = require('./build/vue-loader.conf')
 module.exports = function (dpack, args) {
 
   dpack.set({
-    'entry': './src/main.js',
+    'entry': {
+      app: './src/main.js'
+    },
     //https://github.com/vuejs-templates/webpack/issues/215
     // to avoid vue warning: You are using the runtime-only build of Vue where the template option is not available. Either pre-compile the templates into render functions, or use the compiler-included build.
     'resolve.alias': {
@@ -26,6 +28,4 @@ module.exports = function (dpack, args) {
       }
     }
   })
-
-  return dpackCfg;
 }
