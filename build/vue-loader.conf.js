@@ -1,16 +1,17 @@
 'use strict'
 const utils = require('./utils')
 
-const isProduction = process.env.NODE_ENV === 'production'
-
-module.exports = {
-  loaders: utils.cssLoaders({
-    extract: isProduction
-  }),
-  transformToRequire: {
-    video: 'src',
-    source: 'src',
-    img: 'src',
-    image: 'xlink:href'
+module.exports = function getVueConfig(env) {
+  return {
+    loaders: utils.cssLoaders({
+      extract: env === 'production',
+      env: env
+    }),
+    transformToRequire: {
+      video: 'src',
+      source: 'src',
+      img: 'src',
+      image: 'xlink:href'
+    }
   }
 }

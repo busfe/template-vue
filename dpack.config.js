@@ -1,8 +1,11 @@
 'use strict'
 const path = require('path')
-const vueLoaderConfig = require('./build/vue-loader.conf')
+const getVueConfig = require('./build/vue-loader.conf')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = function (dpack, args) {
+
+  const vueLoaderConfig = getVueConfig(args.env);
 
   dpack.set({
     'entry': {
@@ -28,4 +31,14 @@ module.exports = function (dpack, args) {
       }
     }
   })
+
+  if (args.env === 'production') {
+    const filename = args.md5 ? 'static/[name]_[contenthash:7].css' : 'static/[name].css'
+
+    dpack.set("plugins['extract-text-webpack-plugin']", new ExtractTextPlugin({
+      filename: filename,
+      disable: false,
+      allChunks: true
+    }))
+  }
 }
